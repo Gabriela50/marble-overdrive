@@ -1283,3 +1283,809 @@ h1 span {
     transition-duration: .01ms !important;
   }
 }
+/* =========================================================
+   MARBLE OVERDRIVE — PREMIUM ARCADE VISUAL UPGRADE
+   Capa visual adicional; conserva la lógica React existente.
+   ========================================================= */
+
+:root {
+  --bg: #050810;
+  --panel: #0b1220;
+  --line: #243449;
+  --muted: #8b9bb0;
+  --cyan: #53efff;
+  --orange: #ff9b59;
+  --arcade-white: #edf8ff;
+}
+
+html {
+  background: #050810;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 12% 18%, #0c334533 0, transparent 32%),
+    radial-gradient(ellipse at 88% 32%, #572a1830 0, transparent 30%),
+    radial-gradient(ellipse at 50% -15%, #213e5b55 0, transparent 48%),
+    #050810;
+}
+
+.game-shell {
+  position: relative;
+  isolation: isolate;
+  width: min(1720px, 100%);
+  padding: 0 clamp(14px, 2.8vw, 42px) 24px;
+}
+
+.game-shell::before {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  opacity: .12;
+  background-image:
+    linear-gradient(#7897b015 1px, transparent 1px),
+    linear-gradient(90deg, #7897b015 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+.topbar {
+  position: relative;
+  min-height: 82px;
+  border-bottom-color: #31435a9c;
+}
+
+.topbar::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  width: 24%;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, var(--cyan));
+  box-shadow: 0 0 12px #53efff50;
+}
+
+.brand-mark {
+  position: relative;
+  overflow: hidden;
+  width: 46px;
+  height: 46px;
+  border-color: #4c718a;
+  border-radius: 13px;
+  background:
+    linear-gradient(145deg, #16354a, #08121e 72%);
+  box-shadow:
+    inset 0 0 20px #53efff13,
+    0 0 25px #53efff0b,
+    0 8px 24px #0007;
+}
+
+.brand-mark::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(135deg, #ffffff17, transparent 42%);
+  pointer-events: none;
+}
+
+.brand-name {
+  font-size: 14px;
+  letter-spacing: 2.5px;
+}
+
+.brand-name span {
+  color: #9aacc2;
+  letter-spacing: 3.2px;
+}
+
+.top-status {
+  color: #d3e4f4;
+}
+
+.live-dot {
+  animation: mo-pulse 2.4s ease-in-out infinite;
+}
+
+.language-switch {
+  border-color: #34475d;
+  border-radius: 8px;
+  background: #080e18dc;
+  box-shadow: inset 0 1px #ffffff06;
+}
+
+.language-switch button {
+  min-width: 36px;
+  border-radius: 5px;
+}
+
+.language-switch button.active {
+  border-color: #3b7186;
+  background: linear-gradient(145deg, #153647, #0b1c29);
+  box-shadow: 0 0 16px #53efff12, inset 0 0 12px #53efff10;
+}
+
+.reset-button {
+  border-color: #35465b;
+  border-radius: 7px;
+  background: linear-gradient(145deg, #182434, #0a101b);
+  transition: transform .2s ease, border-color .2s ease,
+    box-shadow .2s ease, background .2s ease;
+}
+
+.reset-button:hover {
+  transform: translateY(-1px);
+  border-color: var(--cyan);
+  box-shadow: 0 0 22px #53efff12;
+}
+
+.intro {
+  position: relative;
+  padding: clamp(30px, 4vw, 52px) 0 30px;
+}
+
+.eyebrow {
+  color: #a2b5c9;
+  letter-spacing: 2.5px;
+}
+
+.eyebrow span {
+  width: 27px;
+  height: 2px;
+}
+
+h1 {
+  font-size: clamp(38px, 5.2vw, 72px);
+  line-height: .98;
+  letter-spacing: -.055em;
+  text-wrap: balance;
+  text-shadow: 0 8px 35px #0009;
+}
+
+h1 span {
+  background: linear-gradient(100deg, #53efff 5%, #a0f6ff 45%, #55d9ff 85%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px #53efff19);
+}
+
+.subtitle {
+  color: #9aaec4;
+  font-size: 10px;
+  letter-spacing: 2px;
+  line-height: 1.9;
+}
+
+.round-info {
+  padding: 13px 16px;
+  border: 1px solid #31465b;
+  border-radius: 9px;
+  background: linear-gradient(145deg, #111d2cdd, #080e18ee);
+  box-shadow: inset 0 1px #ffffff08, 0 12px 30px #0003;
+}
+
+.round-info strong {
+  font-size: 30px;
+  color: var(--arcade-white);
+}
+
+.player-grid {
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.player-card,
+.side-panel,
+.track-panel {
+  border-color: #2b3d52;
+  border-radius: 12px;
+  background:
+    linear-gradient(145deg, #111c2b 0%, #0b111d 58%, #080d16 100%);
+  box-shadow:
+    inset 0 1px #ffffff08,
+    0 14px 38px #0002;
+}
+
+.player-card {
+  padding: 20px 22px 16px;
+  transition: border-color .25s ease, transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.player-card::before {
+  width: 3px;
+  box-shadow: 0 0 16px currentColor;
+}
+
+.player-card.cyan {
+  border-color: #2d5869;
+  box-shadow:
+    inset 0 1px #ffffff08,
+    inset 0 0 50px #53efff05,
+    0 12px 36px #0003;
+}
+
+.player-card.orange {
+  border-color: #60442f;
+  box-shadow:
+    inset 0 1px #ffffff08,
+    inset 0 0 50px #ff9b5905,
+    0 12px 36px #0003;
+}
+
+.player-card.cyan::after,
+.player-card.orange::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 115px;
+  height: 75px;
+  content: "";
+  pointer-events: none;
+  opacity: .16;
+  background: radial-gradient(ellipse at top right, var(--cyan), transparent 72%);
+}
+
+.player-card.orange::after {
+  background: radial-gradient(ellipse at top right, var(--orange), transparent 72%);
+}
+
+.player-orb {
+  width: 43px;
+  height: 43px;
+  border-color: #3b7389;
+  background: radial-gradient(circle at 35% 25%, #20485a, #09141f 75%);
+  box-shadow: inset 0 0 15px #53efff12, 0 0 20px #53efff0b;
+}
+
+.orange .player-orb {
+  border-color: #825737;
+  background: radial-gradient(circle at 35% 25%, #50311e, #160f0b 75%);
+  box-shadow: inset 0 0 15px #ff9b5912, 0 0 20px #ff9b590b;
+}
+
+.player-label {
+  font-size: 13px;
+  letter-spacing: 1.5px;
+}
+
+.player-subtitle {
+  color: #9bacc0;
+  font-size: 9px;
+}
+
+.player-indicator {
+  border-color: #3b4e63;
+  border-radius: 5px;
+  background: #111d2a;
+}
+
+.player-stats {
+  padding: 20px 0 15px;
+}
+
+.stat > span {
+  color: #9bacc0;
+  letter-spacing: 1.4px;
+}
+
+.speed-stat strong {
+  font-size: 29px;
+  font-variant-numeric: tabular-nums;
+}
+
+.speed-stat small {
+  color: #9bacc0;
+}
+
+.life {
+  height: 7px;
+  border-radius: 3px;
+}
+
+.progress-track {
+  height: 5px;
+  border: 1px solid #29384a;
+  background: #080d15;
+}
+
+.progress-track > div {
+  position: relative;
+}
+
+.progress-track > div::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 24px;
+  content: "";
+  background: #ffffff7d;
+  filter: blur(5px);
+}
+
+.progress-label {
+  color: #92a3b8;
+}
+
+.race-layout {
+  gap: 16px;
+}
+
+.side-panel {
+  padding: 20px 16px 16px;
+}
+
+.panel-index {
+  font-size: 24px;
+}
+
+.panel-heading {
+  min-height: 54px;
+}
+
+.panel-heading h2 {
+  font-size: 11px;
+  letter-spacing: 1.1px;
+}
+
+.panel-heading p {
+  color: #94a6bb;
+  line-height: 1.6;
+}
+
+.inventory-title {
+  margin-top: 23px;
+  padding-top: 16px;
+  color: #a2b3c7;
+  letter-spacing: 1px;
+}
+
+.inventory-item {
+  position: relative;
+  min-height: 57px;
+  padding: 11px 7px;
+  border-bottom-color: #29384a;
+  border-radius: 6px;
+}
+
+.inventory-item:not(:disabled):hover {
+  transform: translateX(2px);
+  background: linear-gradient(90deg, #173044aa, transparent);
+  border-color: #3a6076;
+}
+
+.right-panel .inventory-item:not(:disabled):hover {
+  background: linear-gradient(90deg, #39251888, transparent);
+  border-color: #795437;
+}
+
+.item-icon {
+  flex-basis: 36px;
+  height: 36px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 14px #53efff0b;
+}
+
+.right-panel .item-icon {
+  box-shadow: inset 0 0 14px #ff9b590b;
+}
+
+.item-copy strong {
+  color: #e3edf7;
+  font-size: 9px;
+  letter-spacing: .55px;
+}
+
+.item-copy small {
+  color: #9aacc0;
+  line-height: 1.5;
+}
+
+.item-add {
+  color: #c0d0df;
+}
+
+.placed-items {
+  border: 1px solid #27384b;
+  border-radius: 7px;
+  background: #070c14;
+}
+
+.placed-items > span {
+  color: #a2b3c7;
+  letter-spacing: 1.2px;
+}
+
+.placed-items > div {
+  color: #d1dfec;
+  line-height: 1.8;
+}
+
+.track-panel {
+  border-color: #35475e;
+  box-shadow:
+    inset 0 1px #ffffff0a,
+    0 18px 55px #0004,
+    0 0 35px #53efff05;
+}
+
+.track-toolbar {
+  min-height: 56px;
+  padding: 0 19px;
+  background: linear-gradient(90deg, #121e2d, #0a111c);
+}
+
+.track-title {
+  font-size: 10px;
+  letter-spacing: 1.3px;
+}
+
+.track-tag {
+  border-color: #3b5268;
+  background: #101b29;
+  color: #a8bbcf;
+}
+
+.track-coordinates {
+  color: #9aadc2;
+}
+
+.track-scene {
+  min-height: 390px;
+  background:
+    radial-gradient(ellipse at 48% 48%, #14283a 0, #0b1421 45%, #070c15 100%);
+}
+
+.scene-grid {
+  opacity: .75;
+  background-image:
+    linear-gradient(#4a6b861d 1px, transparent 1px),
+    linear-gradient(90deg, #4a6b861d 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse at center, black 15%, transparent 82%);
+}
+
+.scene-glow {
+  width: 230px;
+  height: 230px;
+  filter: blur(72px);
+  opacity: .14;
+}
+
+.glow-cyan {
+  left: 0;
+  top: 10%;
+}
+
+.glow-orange {
+  right: 0;
+  bottom: 5%;
+}
+
+.circuit-svg {
+  overflow: visible;
+}
+
+.track-countdown {
+  min-width: 150px;
+  padding: 16px 22px;
+  border-color: #52677d99;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #111d2ceF, #070c15f5);
+  box-shadow:
+    inset 0 1px #ffffff0d,
+    0 16px 55px #0009,
+    0 0 35px #53efff0b;
+  backdrop-filter: blur(12px);
+}
+
+.track-countdown > span {
+  color: #b1c5d8;
+  letter-spacing: 2px;
+}
+
+.track-countdown strong {
+  font-size: 36px;
+  text-shadow: 0 0 25px #53efff48;
+}
+
+.track-countdown small {
+  letter-spacing: 1.7px;
+}
+
+.track-footer {
+  min-height: 48px;
+  padding: 0 18px;
+  background: #090f19;
+  color: #b1c1d3;
+}
+
+.track-footer-note {
+  letter-spacing: .8px;
+}
+
+.start-race-button {
+  padding: 11px 17px;
+  border-color: #3bafc5;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #164355, #0b202e);
+  box-shadow: inset 0 1px #ffffff12, 0 0 18px #53efff0c;
+  font-size: 10px;
+}
+
+.start-race-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 0 24px #53efff20, inset 0 1px #ffffff15;
+}
+
+.action-deck {
+  margin-top: 18px;
+  padding: 17px 19px;
+  gap: 18px;
+  border-color: #2b3c51;
+  border-radius: 10px;
+  background:
+    linear-gradient(110deg, #111c2b, #0b111c 60%, #10141e);
+  box-shadow: inset 0 1px #ffffff08, 0 12px 35px #0002;
+}
+
+.action-message strong {
+  color: #edf7ff;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.action-message small {
+  color: #9bacc0;
+  line-height: 1.8;
+}
+
+.action-player-name {
+  letter-spacing: .8px;
+}
+
+.power-button,
+.brake-button {
+  position: relative;
+  overflow: hidden;
+  min-height: 52px;
+  border-radius: 7px;
+  background: linear-gradient(145deg, #112a38, #0a1722);
+  transition: transform .2s ease, box-shadow .2s ease,
+    border-color .2s ease, background .2s ease;
+}
+
+.power-button:not(:disabled):hover,
+.brake-button:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+.power-button:not(:disabled):hover {
+  box-shadow: 0 7px 20px #53efff0d;
+}
+
+.power-button strong,
+.brake-button strong {
+  font-size: 9px;
+  letter-spacing: .9px;
+}
+
+.power-button small,
+.brake-button small {
+  color: #a0b1c5;
+  letter-spacing: .3px;
+}
+
+.action-player.orange .power-button {
+  background: linear-gradient(145deg, #352215, #17100b);
+}
+
+.action-player.orange .power-button:not(:disabled):hover {
+  box-shadow: 0 7px 20px #ff9b590d;
+}
+
+.brake-button {
+  background: linear-gradient(145deg, #1a202c, #0c111a);
+}
+
+.brake-button.is-braking {
+  border-color: #ff9b59;
+  box-shadow: inset 0 0 20px #ff9b5912, 0 0 16px #ff9b590b;
+}
+
+.game-footer {
+  min-height: 62px;
+  color: #8798ad;
+  letter-spacing: 1.2px;
+}
+
+.game-footer b {
+  color: #c1d0df;
+}
+
+@keyframes mo-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .48; }
+}
+
+@media (min-width: 1450px) {
+  .track-scene {
+    min-height: 490px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .race-layout {
+    gap: 11px;
+  }
+
+  .side-panel {
+    padding: 15px 11px;
+  }
+
+  .track-scene {
+    min-height: 355px;
+  }
+
+  .player-card {
+    padding: 16px 15px 13px;
+  }
+
+  .action-deck {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 760px) {
+  .game-shell {
+    padding: 0 12px 18px;
+  }
+
+  .topbar {
+    min-height: 68px;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .brand-name {
+    font-size: 10px;
+  }
+
+  .intro {
+    align-items: flex-end;
+    gap: 10px;
+    padding: 30px 0 22px;
+  }
+
+  h1 {
+    font-size: clamp(30px, 8vw, 46px);
+    line-height: 1.02;
+  }
+
+  .round-info {
+    padding: 9px;
+    border-radius: 7px;
+  }
+
+  .round-info strong {
+    font-size: 21px;
+  }
+
+  .player-grid {
+    gap: 9px;
+  }
+
+  .player-card {
+    padding: 13px 10px 11px;
+    border-radius: 9px;
+  }
+
+  .player-orb {
+    width: 30px;
+    height: 30px;
+  }
+
+  .player-label {
+    font-size: 9px;
+    letter-spacing: .5px;
+  }
+
+  .player-subtitle {
+    font-size: 7px;
+    letter-spacing: .4px;
+  }
+
+  .player-stats {
+    gap: 9px;
+    padding: 13px 0 11px;
+  }
+
+  .speed-stat strong {
+    font-size: 20px;
+  }
+
+  .race-layout {
+    gap: 10px;
+  }
+
+  .track-panel {
+    border-radius: 10px;
+  }
+
+  .track-toolbar {
+    min-height: 48px;
+    padding: 0 10px;
+  }
+
+  .track-scene {
+    min-height: clamp(280px, 80vw, 420px);
+  }
+
+  .track-footer {
+    min-height: 48px;
+    gap: 8px;
+    padding: 6px 9px;
+  }
+
+  .start-race-button {
+    padding: 10px 11px;
+    font-size: 9px;
+  }
+
+  .side-panel {
+    border-radius: 9px;
+  }
+
+  .action-deck {
+    margin-top: 13px;
+    padding: 13px 10px;
+    gap: 13px;
+    border-radius: 9px;
+  }
+
+  .power-button,
+  .brake-button {
+    gap: 5px;
+    padding: 7px 4px;
+  }
+
+  .power-button strong,
+  .brake-button strong {
+    font-size: 8px;
+    letter-spacing: .2px;
+  }
+
+  .power-button small,
+  .brake-button small {
+    font-size: 7px;
+  }
+
+  .game-footer {
+    gap: 10px;
+    line-height: 1.8;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot {
+    animation: none;
+  }
+
+  .player-card,
+  .reset-button,
+  .inventory-item,
+  .power-button,
+  .brake-button,
+  .start-race-button {
+    transition: none;
+  }
+}
